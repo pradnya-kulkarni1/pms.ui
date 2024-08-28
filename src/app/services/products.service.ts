@@ -19,4 +19,16 @@ export class ProductsService {
     newProduct.id='00000000-0000-0000-0000-000000000000';
     return this.http.post(this.baseApiUrl+'/api/products',newProduct) as Observable<Product>;
   }
+
+  getProduct(id: string): Observable<Product>{
+
+    return this.http.get(this.baseApiUrl + '/api/products/'+id) as Observable<Product>;
+  }
+
+  updateProduct(id:string, updateProductRequest: Product): Observable<Product>{
+    return this.http.put(this.baseApiUrl+'/api/products/'+ id, updateProductRequest) as Observable<Product>;
+  }
+  deleteProduct(id: string): Observable<Product>{
+    return this.http.delete(this.baseApiUrl+'/api/products/'+id) as Observable<Product>;
+  }
 }

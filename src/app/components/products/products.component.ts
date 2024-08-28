@@ -24,4 +24,15 @@ ngOnInit():void{
   })
 }
 
+deleteProduct(id:string){
+this.productService.deleteProduct(id).subscribe({
+  next:(response)=>{
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
+      this.router.navigate([currentUrl]);
+    })
+  }
+})
+}
+
 }
